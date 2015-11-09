@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "SlackThemer",
+    "description": "The name of the application"
+  },
+  "appDescription": {
+    "message": "Applies the side bar colors for slack to the entire application",
+    "description": "The description of the application"
+  }
+}
