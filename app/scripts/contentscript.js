@@ -3,17 +3,25 @@
 $(document).ready(function () {
     var checkInterval = setInterval(function () {
         if (Ready()) {
+            var colors = localStorage.getItem('ST_Colors').toString().split(',');
+            console.log(colors);
             clearInterval(checkInterval);
-            setTimeout(function () {
-                var colors = getColors();
+            if (colors) {
+                setUp(colors);
+            } else {
                 setTimeout(function () {
-                    applyColors(colors);
-                    addListner();
-                }, 300);
-            }, 100);
+                    colors = getColors();
+                    setTimeout(setUp(colors), 300);
+                }, 100);
+            }
         }
     }, 200);
 });
+
+function setUp(colors) {
+    applyColors(colors);
+    addListner();
+}
 
 function Ready() {
     return parseInt($('#loading_welcome').css('opacity')) ? 0 : 1;
@@ -38,6 +46,7 @@ function getColors() {
 }
 
 function applyColors(colors) {
+    localStorage.setItem('ST_Colors', colors);
     console.log(colors);
     var head = document.getElementsByTagName('head')[0];
     var style = document.createElement('style');

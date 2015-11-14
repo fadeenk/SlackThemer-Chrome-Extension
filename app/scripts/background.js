@@ -7,10 +7,7 @@ chrome.runtime.onInstalled.addListener(function (details) {
 chrome.tabs.onUpdated.addListener(function (tabId) {
   chrome.tabs.get(tabId, function (tab) {
     if (tab.url.match(/(.slack.com)+/g)) {
-      console.log('sjow');
       chrome.pageAction.show(tabId);
-    } else {
-      console.log('not slack');
     }
   });
 });
